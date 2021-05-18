@@ -1,0 +1,42 @@
+{
+  "files": {
+    "static/js/0.05108e2b.chunk.js": "/ReactChat/static/js/0.05108e2b.chunk.js",
+    "static/js/0.05108e2b.chunk.js.map": "/ReactChat/static/js/0.05108e2b.chunk.js.map",
+    "main.css": "/ReactChat/static/css/main.3d500160.chunk.css",
+    "main.js": "/ReactChat/static/js/main.1dcc5b61.chunk.js",
+    "main.js.map": "/ReactChat/static/js/main.1dcc5b61.chunk.js.map",
+    "runtime-main.js": "/ReactChat/static/js/runtime-main.33b176d5.js",
+    "runtime-main.js.map": "/ReactChat/static/js/runtime-main.33b176d5.js.map",
+    "static/js/3.cda74537.chunk.js": "/ReactChat/static/js/3.cda74537.chunk.js",
+    "static/js/3.cda74537.chunk.js.map": "/ReactChat/static/js/3.cda74537.chunk.js.map",
+    "static/js/4.f68f7163.chunk.js": "/ReactChat/static/js/4.f68f7163.chunk.js",
+    "static/js/4.f68f7163.chunk.js.map": "/ReactChat/static/js/4.f68f7163.chunk.js.map",
+    "static/js/5.5950bdc7.chunk.js": "/ReactChat/static/js/5.5950bdc7.chunk.js",
+    "static/js/5.5950bdc7.chunk.js.map": "/ReactChat/static/js/5.5950bdc7.chunk.js.map",
+    "static/js/6.69650c81.chunk.js": "/ReactChat/static/js/6.69650c81.chunk.js",
+    "static/js/6.69650c81.chunk.js.map": "/ReactChat/static/js/6.69650c81.chunk.js.map",
+    "static/js/7.94e21d04.chunk.js": "/ReactChat/static/js/7.94e21d04.chunk.js",
+    "static/js/7.94e21d04.chunk.js.map": "/ReactChat/static/js/7.94e21d04.chunk.js.map",
+    "static/js/8.31580d6f.chunk.js": "/ReactChat/static/js/8.31580d6f.chunk.js",
+    "static/js/8.31580d6f.chunk.js.map": "/ReactChat/static/js/8.31580d6f.chunk.js.map",
+    "static/js/9.d13f529d.chunk.js": "/ReactChat/static/js/9.d13f529d.chunk.js",
+    "static/js/9.d13f529d.chunk.js.map": "/ReactChat/static/js/9.d13f529d.chunk.js.map",
+    "index.html": "/ReactChat/index.html",
+    "static/css/main.3d500160.chunk.css.map": "/ReactChat/static/css/main.3d500160.chunk.css.map",
+    "static/js/3.cda74537.chunk.js.LICENSE.txt": "/ReactChat/static/js/3.cda74537.chunk.js.LICENSE.txt",
+    "static/media/404.f615d4d7.png": "/ReactChat/static/media/404.f615d4d7.png",
+    "static/media/Logo.812a9abb.svg": "/ReactChat/static/media/Logo.812a9abb.svg",
+    "static/media/check.6e53806f.svg": "/ReactChat/static/media/check.6e53806f.svg",
+    "static/media/close.9f73c1c5.svg": "/ReactChat/static/media/close.9f73c1c5.svg",
+    "static/media/emoji.c9daaafd.svg": "/ReactChat/static/media/emoji.c9daaafd.svg",
+    "static/media/loading.ad992768.gif": "/ReactChat/static/media/loading.ad992768.gif",
+    "static/media/send.a5a3638c.svg": "/ReactChat/static/media/send.a5a3638c.svg",
+    "static/media/userImg.svg": "/ReactChat/static/media/userImg.c9678b2f.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.33b176d5.js",
+    "static/js/3.cda74537.chunk.js",
+    "static/css/main.3d500160.chunk.css",
+    "static/js/main.1dcc5b61.chunk.js"
+  ]
+}
