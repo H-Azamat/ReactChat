@@ -4,7 +4,6 @@ import {compose} from "redux";
 import {connect} from "react-redux";
 import { withRouter, Redirect } from 'react-router-dom'
 import {Profile} from "./Profile";
-import {setCurrentUser} from "../../redux/store";
 import Loading from "../common/Loading/Loading";
 
 import firebase from "../../firebase";
@@ -17,6 +16,8 @@ class ProfileContainer extends Component {
             isFound: true,
             img: this.props.img,
             username: this.props.username,
+            description: this.props.description,
+            social: this.props.social,
             isLoading: true,
             isRedirect: false,
             isCurrent: false
@@ -31,6 +32,8 @@ class ProfileContainer extends Component {
                 this.setState({
                     img: res.img,
                     username: res.username,
+                    description: res.description,
+                    social: res.social,
                     isLoading: false,
                     isCurrent: false
                 })
@@ -39,16 +42,17 @@ class ProfileContainer extends Component {
             this.setState({
                 img: this.props.img,
                 username: this.props.username,
+                description: this.props.description,
+                social: this.props.social,
                 isLoading: false,
                 isCurrent: true
             })
         }
     }
 
-    updateProfile = async (fileValue, setFileValue, setImg, img, username) => {
-        if(fileValue) setImg(fileValue);
-        await  profileApi.updateProfile(fileValue || img, username, this.props.setCurrentUser);
-        setFileValue('');
+    updateProfile = async (newImg, setImg, img, username, description, social) => {
+        if(newImg) setImg(newImg);
+        await  profileApi.updateProfile(newImg || img, username, description, social);
     }
 
     async componentDidMount() {
@@ -62,7 +66,9 @@ class ProfileContainer extends Component {
     }
 
     async componentDidUpdate(prevProps, prevState){
-        if(this.props.match.params.userId !== prevProps.match.params.userId || this.state.username !== prevState.username){
+        if(this.props.match.params.userId !== prevProps.match.params.userId
+            || this.state.username !== prevState.username
+            || this.props !== prevProps){
             await this.refreshProfile();
         }
     }
@@ -70,12 +76,17 @@ class ProfileContainer extends Component {
     render(){
         if(this.state.isRedirect) return <Redirect to="/login"/>
         return(
-            <div>{this.state.isLoading
-                ? <Loading />
-                : <Profile
-                    img={this.state.img} username={this.state.username}
-                    updateProfile={this.updateProfile} isFound={this.state.isFound}
-                    isCurrent={this.state.isCurrent} />}</div>
+            <div>
+                {this.state.isLoading
+                    ? <Loading />
+                    : <Profile
+                        img={this.state.img} username={this.state.username}
+                        updateProfile={this.updateProfile} isFound={this.state.isFound}
+                        isCurrent={this.state.isCurrent} description={this.state.description}
+                        social={this.state.social}
+                    />
+                }
+            </div>
         )
     }
 
@@ -83,10 +94,12 @@ class ProfileContainer extends Component {
 
 const mapStateToProps = (store) => ({
     username: store.currentUser.username,
-    img: store.currentUser.userImg
+    img: store.currentUser.userImg,
+    description: store.currentUser.description,
+    social: store.currentUser.social
 })
 
 export default compose(
-    connect(mapStateToProps, {setCurrentUser}),
+    connect(mapStateToProps, {}),
     withRouter
 )(ProfileContainer);

@@ -5,19 +5,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83521c2e-dd67-499e-9419-a0bfa9c49f5e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/Profile/ProfileContainer.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/arrow.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/back.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/edit-white.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/edit.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/logout.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/profile.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/assets/img/users.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Profile/ProfileEdit.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Profile/ProfileSocial.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Profile/ProfileSocialEdit.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/api.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/img/Logo.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/img/logo.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/img/check.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/img/check.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/img/close.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/img/emoji.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/img/emoji.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/img/send.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/img/send.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/img/userImg.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/img/userImg.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Chat/Chat.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Chat/Chat.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Chat/ChatContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Chat/ChatContainer.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Chat/Footer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Chat/Footer.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Chat/Message.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Chat/Message.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Chat/Messages.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Chat/Messages.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Login/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login/Login.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Profile/Profile.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/Profile.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileContainer.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileContainer.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Register/Register.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Register/Register.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/redux/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/redux/store.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
@@ -37,15 +53,19 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1sQL4jtiN9ZruZQ5hXkWihioSij" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../samurai-project/my-app/src/components/Profile/ProfileContainer.jsx" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/assets/img" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -58,6 +78,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\www\ReactChat\src\assets\img" />
       <recent name="D:\react-projects\ReactChat\src\assets\img" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -83,6 +104,14 @@
       <workItem from="1620990951317" duration="3482000" />
       <workItem from="1620997039687" duration="12491000" />
       <workItem from="1621053509423" duration="4470000" />
+      <workItem from="1621335939356" duration="5315000" />
+      <workItem from="1621349697627" duration="5489000" />
+      <workItem from="1621397074864" duration="45000" />
+      <workItem from="1621411045291" duration="2343000" />
+      <workItem from="1621415982030" duration="524000" />
+      <workItem from="1621418321730" duration="3504000" />
+      <workItem from="1621489085197" duration="18048000" />
+      <workItem from="1621513283795" duration="7811000" />
     </task>
     <servers />
   </component>
@@ -100,5 +129,8 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>

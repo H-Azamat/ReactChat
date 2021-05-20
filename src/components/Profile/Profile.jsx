@@ -1,20 +1,24 @@
 import {NavLink} from 'react-router-dom';
 import {useState, useEffect} from 'react';
 import {Redirect} from "react-router-dom";
+import ProfileSocial from "./ProfileSocial";
 
 import Header from '../Header';
 import defaultImg from '../../assets/img/userImg.svg';
-import close from '../../assets/img/close.svg';
-import check from '../../assets/img/check.svg';
+import back from '../../assets/img/back.svg';
+import edit from '../../assets/img/edit.svg';
+import ProfileEdit from "./ProfileEdit";
 
 export const Profile = (props) => {
     const [username, setUsername] = useState(props.username);
+    const [description, setDescription] = useState(props.description);
     const [img, setImg] = useState(props.img);
-    const [fileValue, setFileValue] = useState(null);
+    const [isEdit, setIsEdit] = useState(false);
 
     useEffect(() => {
         setUsername(props.username)
         setImg(props.img)
+        setDescription(props.description || 'Описание отсутствует :(')
     }, [props])
     
     return (
@@ -22,35 +26,45 @@ export const Profile = (props) => {
             {!props.isFound ?
                 <Redirect to="/error" /> :
                 <div>
+
                     <Header />
-                    <div className="profileInfo">
-                        <div className="profileInfo-actions">
-                            <NavLink to="/"> <img src={close} alt="close" className="profileInfo-close"/> </NavLink>
-                            {props.isCurrent
-                            && <img src={check} alt="check" className="profileInfo-check"
-                                    onClick={() => props.updateProfile(fileValue, setFileValue, setImg, img, username)}/>
-                            }
-                        </div>
-                        {props.isCurrent
-                            ? <input className="profileInfo-username isCurrent" type="text" value={username}
-                                onChange={(e) => {
-                                    setUsername(e.target.value)
-                                }}/>
-                            : <input className="profileInfo-username" type="text" value={username} readOnly={true} />
-                        }
-                        <div className="profileInfo-photo__block">
-                            <img alt="userImg" className="profileInfo-photo" src={img ? img : defaultImg} />
-                        </div>
-                        {props.isCurrent
-                        && <div>
-                                <p className="profileInfo-text">Вставьте URL ссылку картинки:</p>
-                                <input type="url" className="profileInfo-photo__file" value={fileValue ? fileValue : ''}
-                                       onChange={(e) => {
-                                           setFileValue(e.target.value)
-                                       }}/>
+
+                    {!isEdit
+                        ? <div className="container">
+
+                            <div className="profile-actions">
+                                <NavLink to="/chat"> <img src={back} alt="back" className="profile-back"/> </NavLink>
+                                {props.isCurrent
+                                && <img src={edit} alt="edit" className="profile-edit"
+                                        onClick={() => setIsEdit(true)}/>
+                                }
                             </div>
-                        }
-                    </div>
+                            <div className="profile-info">
+
+                                <div className="profile-photo-block">
+                                    {img
+                                        ? <div alt="userImg" className="profile-photo" style={{backgroundImage: `url(${img})`}} />
+                                        : <div alt="userImg" className="profile-photo" style={{backgroundImage: `url(${defaultImg})`}} />
+                                    }
+                                </div>
+
+                                <div>
+                                    <h2 className="profile-username">{username}</h2>
+                                    <p className="profile-description">{description}</p>
+                                </div>
+
+                            </div>
+
+                            <ProfileSocial social={props.social} />
+
+                        </div>
+                        : <ProfileEdit
+                            username={username} setIsEdit={setIsEdit}
+                            img={img} description={description} social={props.social}
+                            updateProfile={props.updateProfile}
+                        />
+                    }
+
                 </div>
             }
         </div>

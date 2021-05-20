@@ -36,8 +36,8 @@ const messagesReducer = (state = initialState, action) => {
     }
 }
 
-export const setCurrentUser = (uid = '', username = '', userImg = null, isInitial = false) => {
-    return {type: SET_CURRENT_USER, currentUser: {uid, username, userImg}, isInitial}
+export const setCurrentUser = (uid = '', username = '', userImg = null, description = '', social = {}, isInitial = false) => {
+    return {type: SET_CURRENT_USER, currentUser: {uid, username, userImg, description, social}, isInitial}
 }
 
 export const updateMessages = (messages) => {

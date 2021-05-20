@@ -13,10 +13,21 @@ const Login = () => {
     return(
         <div className="form-block">
             <form className="form" onSubmit={ (e) => {authApi.signIn(e, email, password, setIsRedirect)} }>
-                <input type="email" placeholder="Email" className="form-field" onChange={ (e) => {setEmail(e.target.value)} } />
-                <input type="password" placeholder="Password" className="form-field" onChange={ (e) => {setPassword(e.target.value)} } />
+                <h3 className="form-title">Вход</h3>
+                <input
+                    type="email" placeholder="Email" required={true}
+                    className="form-field" onChange={ (e) => {setEmail(e.target.value)} }
+                />
+                <input
+                    type="password" placeholder="Password"
+                    required={true}
+                    className="form-field" onChange={ (e) => {setPassword(e.target.value)} }
+                />
                 <button className="form-send">Вход</button>
-                <NavLink to="/register" className="form-send active">Зарегистрироваться</NavLink>
+                <p className="form-text">
+                    Еще нет аккаунта?<br />
+                    <NavLink to="/register" className="form-text link">Зарегистрироваться</NavLink>
+                </p>
             </form>
         </div>
     )

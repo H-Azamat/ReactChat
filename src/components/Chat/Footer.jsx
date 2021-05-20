@@ -16,9 +16,9 @@ const Footer = ({id}) => {
         setMessage(message + emojiObject.emoji);
     }
 
-    const sendMessage = async (e) => {
-        e.preventDefault()
-        await messagesApi.sendMessage(message, date(), setMessage, id)
+    const sendMessage = async () => {
+        await messagesApi.sendMessage(message, date(), id)
+        setMessage('')
     };
 
     const date = () => {
@@ -48,19 +48,23 @@ const Footer = ({id}) => {
     }
 
     return(
-        <form className="formSending" onSubmit={(e) => sendMessage(e)}>
-            <div className="formSending-emoji">
-                <div onClick={openEmoji} className="formSending-emoji-open">
-                    <img width="28" src={emoji} alt="emoji"/>
+        <form className="formSending" onSubmit={(e) => { e.preventDefault(); sendMessage(e) }}>
+            <div className="container">
+                <input type="text" value={message} className="formSending-field" placeholder="Введите сообщение" onChange={(e) => {setMessage(e.target.value)}} />
+
+                <div className="formSending-emoji">
+                    <div onClick={openEmoji} className="formSending-emoji-open">
+                        <img width="28" src={emoji} alt="emoji"/>
+                    </div>
+                    {isEmojiOpen && <div className="formSending-emoji-modal">
+                        <Picker onEmojiClick={onEmojiClick} />
+                    </div>}
                 </div>
-                {isEmojiOpen && <div className="formSending-emoji-modal">
-                    <Picker onEmojiClick={onEmojiClick} />
-                </div>}
+
+                <button className="formSending-submit">
+                    <img src={send} alt="submit" className="formSending-submit__img" />
+                </button>
             </div>
-            <input type="text" value={message} className="formSending-field" placeholder="Введите сообщение" onChange={(e) => {setMessage(e.target.value)}} />
-            <button className="formSending-submit">
-                <img src={send} alt="submit" className="formSending-submit__img" />
-            </button>
         </form>
     )
 }

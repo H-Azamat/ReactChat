@@ -1,28 +1,103 @@
 import { connect } from 'react-redux';
-import logo from '../assets/img/Logo.svg';
-import { authApi } from '../api/api';
+import {useState} from "react";
+
+import logo from '../assets/img/logo.svg';
+import arrow from '../assets/img/arrow.svg';
 import defaultImg from '../assets/img/userImg.svg';
-import {NavLink} from 'react-router-dom';
+import {authApi} from "../api/api";
+import {NavLink} from "react-router-dom";
+import Modal from "react-modal";
 
-const Header = ({username, userImg}) => {
+Modal.setAppElement('#root');
+
+const Header = ({username, userImg, users}) => {
+
+    const customStyles = {
+        content : {
+            top                   : '50%',
+            left                  : '50%',
+            right                 : 'auto',
+            bottom                : 'auto',
+            marginRight           : '-50%',
+            transform             : 'translate(-50%, -50%)'
+        },
+        overlay: {
+            backgroundColor       : 'rgba(51, 51, 51, 0.6)'
+        }
+    };
+
+    let [isHidden, setIsHidden] = useState(true);
+    const [modalIsOpen, setModalIsOpen] = useState(false);
+
     return(
-        <div className="header"> 
-            <img src={logo} alt="ReactChat" className="header-logo" />
+        <div className="header">
+            <div className="container">
+                <img src={logo} alt="ReactChat" className="header-logo" />
 
-            <div className="header-info">
-                <NavLink to='/profile' className="header-toProfile">
-                    <span className="header-username">{username}</span>
-                    <img src={userImg ? userImg : defaultImg} alt="imgProfile" className="header-img"/>
-                </NavLink>
-                {/*<button className="header-logout" onClick={() => { authApi.logout() }}>Выйти</button>*/}
+                <div className="header-info" onClick={() => setIsHidden(!isHidden)}>
+                    <div className="header-toProfile">
+                        <img src={arrow} alt="arrow" className={`header-arrow ${!isHidden ? 'rotate' : ''}`}/>
+                        <span className="header-username">{username}</span>
+                        {userImg
+                            ? <div className="header-img" style={{backgroundImage: `url(${userImg})`}} />
+                            : <div className="header-img" style={{backgroundImage: `url(${defaultImg})`}} />
+                        }
+                    </div>
+                </div>
+
+                <div className={`header-menu ${isHidden ? 'hidden' : ''}`}>
+                    <NavLink to={'/profile'} className="header-item">
+                        <svg className='header-item-img' width="16" height="16" viewBox="0 0 16 16" fill="#333" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.895 7.97031C9.96267 7.97031 11.6386 6.29423 11.6386 4.22667C11.6386 2.15921 9.96267 0.483032 7.895 0.483032C5.82754 0.483032 4.15137 2.15921 4.15137 4.22667C4.15296 6.29354 5.82814 7.96872 7.895 7.97031ZM7.895 1.11753C9.6122 1.11753 11.0041 2.50948 11.0041 4.22667C11.0041 5.94386 9.6122 7.33581 7.895 7.33581C6.17801 7.33581 4.78587 5.94386 4.78587 4.22667C4.78875 2.51077 6.1791 1.12031 7.895 1.11753Z"/>
+                            <path d="M7.89497 8.90625C6.26755 8.90625 4.75415 9.53757 3.63113 10.6861C2.49213 11.8504 1.86707 13.4398 1.86707 15.1659C1.86756 15.3408 2.00938 15.4826 2.18437 15.4831H13.6057C13.7808 15.4826 13.9224 15.3408 13.9229 15.1659C13.9229 13.4431 13.2979 11.8504 12.159 10.6893C11.0359 9.54075 9.52258 8.90625 7.89497 8.90625ZM2.50802 14.8486C2.57784 13.4146 3.13299 12.1043 4.08161 11.1334C5.08416 10.1086 6.43887 9.54403 7.89189 9.54403C9.34492 9.54403 10.6996 10.1086 11.7021 11.1334C12.6539 12.1043 13.2059 13.4146 13.2758 14.8486H2.50802Z"/>
+                        </svg>
+                        <span className='header-item-text'>Профиль</span>
+                    </NavLink>
+                    <div className="header-item">
+                        <svg className='header-item-img' width="17" height="17" viewBox="0 0 17 17" fill="#333" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M14.7026 7.85247C15.2004 7.50265 15.5301 6.92073 15.5301 6.26482C15.5301 5.19181 14.6622 4.32398 13.5892 4.32398C12.5162 4.32398 11.6484 5.19181 11.6484 6.26482C11.6484 6.92073 11.9747 7.50265 12.4759 7.85247C12.0487 8.00047 11.6585 8.2292 11.3288 8.52521C10.8748 8.13838 10.3399 7.84238 9.75465 7.66747C10.4644 7.23692 10.942 6.45318 10.942 5.56181C10.942 4.20289 9.8421 3.10297 8.48318 3.10297C7.12426 3.10297 6.02434 4.20625 6.02434 5.56181C6.02434 6.45318 6.49861 7.23692 7.21171 7.66747C6.63316 7.84238 6.10507 8.13502 5.65433 8.51512C5.32469 8.22584 4.94123 8.00047 4.52078 7.85584C5.0186 7.50601 5.34824 6.9241 5.34824 6.26818C5.34824 5.19517 4.48041 4.32734 3.4074 4.32734C2.33439 4.32734 1.46656 5.19517 1.46656 6.26818C1.46656 6.9241 1.79284 7.50601 2.29402 7.85584C0.958646 8.31666 0 9.58476 0 11.0749V11.2969C0 11.3036 0.00672734 11.3103 0.0134547 11.3103H4.12723C4.10368 11.4953 4.09023 11.6871 4.09023 11.8788V12.1075C4.09023 13.0964 4.89078 13.897 5.8797 13.897H11.0934C12.0823 13.897 12.8829 13.0964 12.8829 12.1075V11.8788C12.8829 11.6871 12.8694 11.4953 12.8459 11.3103H16.9865C16.9933 11.3103 17 11.3036 17 11.2969V11.0749C16.9933 9.5814 16.038 8.31329 14.7026 7.85247ZM12.1866 6.26145C12.1866 5.48781 12.8156 4.8588 13.5892 4.8588C14.3629 4.8588 14.9919 5.48781 14.9919 6.26145C14.9919 7.02501 14.3763 7.64729 13.6161 7.66411C13.6061 7.66411 13.5993 7.66411 13.5892 7.66411C13.5791 7.66411 13.5724 7.66411 13.5623 7.66411C12.7988 7.65065 12.1866 7.02837 12.1866 6.26145ZM6.5558 5.56181C6.5558 4.50225 7.4169 3.64115 8.47645 3.64115C9.53601 3.64115 10.3971 4.50225 10.3971 5.56181C10.3971 6.58437 9.59319 7.42192 8.58746 7.4791C8.55046 7.4791 8.51345 7.4791 8.47645 7.4791C8.43945 7.4791 8.40245 7.4791 8.36545 7.4791C7.35971 7.42192 6.5558 6.58437 6.5558 5.56181ZM1.99466 6.26145C1.99466 5.48781 2.62366 4.8588 3.39731 4.8588C4.17095 4.8588 4.79996 5.48781 4.79996 6.26145C4.79996 7.02501 4.18441 7.64729 3.42422 7.66411C3.41413 7.66411 3.4074 7.66411 3.39731 7.66411C3.38722 7.66411 3.38049 7.66411 3.3704 7.66411C2.61021 7.65065 1.99466 7.02837 1.99466 6.26145ZM4.22141 10.7688H0.544915C0.69628 9.33585 1.9072 8.21239 3.37713 8.20229C3.38385 8.20229 3.39058 8.20229 3.39731 8.20229C3.40404 8.20229 3.41076 8.20229 3.41749 8.20229C4.11713 8.20566 4.75623 8.46466 5.25069 8.88512C4.76632 9.40985 4.40641 10.0557 4.22141 10.7688ZM12.3379 12.1075C12.3379 12.7971 11.7762 13.3588 11.0867 13.3588H5.87297C5.18342 13.3588 4.62169 12.7971 4.62169 12.1075V11.8788C4.62169 9.78995 6.29007 8.0812 8.36545 8.02066C8.40245 8.02402 8.44282 8.02402 8.47982 8.02402C8.51682 8.02402 8.55718 8.02402 8.59418 8.02066C10.6696 8.0812 12.3379 9.78995 12.3379 11.8788V12.1075ZM12.7382 10.7688C12.5532 10.059 12.2 9.42331 11.719 8.89857C12.2169 8.46802 12.8627 8.20902 13.5691 8.20229C13.5758 8.20229 13.5825 8.20229 13.5892 8.20229C13.596 8.20229 13.6027 8.20229 13.6094 8.20229C15.0793 8.21239 16.2903 9.33585 16.4416 10.7688H12.7382Z"/>
+                        </svg>
+
+                        <span onClick={() => setModalIsOpen(true)} className='header-item-text'>Пользователи</span>
+                    </div>
+                    <div className="header-item" onClick={() =>  authApi.logout() }>
+                        <svg className='header-item-img' width="16" height="16" viewBox="0 0 16 16" fill="#333" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10.3333 12C10.1491 12 10 12.1491 10 12.3333V14.6667C10 15.0342 9.70084 15.3333 9.33334 15.3333H1.33334C0.965844 15.3333 0.666687 15.0342 0.666687 14.6667V1.33334C0.666687 0.965844 0.965844 0.666687 1.33334 0.666687H9.33334C9.70084 0.666687 10 0.965844 10 1.33334V3.66669C10 3.85094 10.1491 4.00003 10.3333 4.00003C10.5176 4.00003 10.6667 3.85094 10.6667 3.66669V1.33334C10.6667 0.597969 10.0687 0 9.33334 0H1.33334C0.597969 0 0 0.597969 0 1.33334V14.6667C0 15.402 0.597969 16 1.33334 16H9.33334C10.0687 16 10.6667 15.402 10.6667 14.6667V12.3333C10.6667 12.1491 10.5176 12 10.3333 12Z"/>
+                            <path d="M15.8919 7.7542L11.8919 4.08754C11.7555 3.9632 11.5456 3.97263 11.4209 4.10804C11.2966 4.24379 11.3057 4.45473 11.4414 4.57907L14.8098 7.66663H4.33334C4.14909 7.66663 4 7.81573 4 7.99998C4 8.18423 4.14909 8.33332 4.33334 8.33332H14.8099L11.4414 11.4209C11.3057 11.5452 11.2966 11.7562 11.4209 11.8919C11.4867 11.9635 11.5765 12 11.6667 12C11.7471 12 11.8278 11.971 11.892 11.9124L15.892 8.24576C15.9609 8.1826 16 8.09342 16 7.99998C16 7.90654 15.9609 7.81735 15.8919 7.7542Z"/>
+                        </svg>
+                        <span className='header-item-text'>Выйти</span>
+                    </div>
+                </div>
             </div>
+
+            <Modal
+                isOpen={modalIsOpen}
+                onRequestClose={() => {setModalIsOpen(false)}}
+                style={customStyles}
+            >
+
+                <h1 className="modal-title">Пользователи:</h1>
+                <div className="modal-users">
+                    {
+                        users.map(user => <NavLink to={'/profile/' + user.userId} key={user.userId} className='modal-user'>
+                            {user.img
+                                ? <div className="modal-user-img" style={{backgroundImage: `url(${user.img})`}}/>
+                                : <div className="modal-user-img" style={{backgroundImage: `url(${defaultImg})`}}/>
+                            }
+                            <span className="modal-user-name">{user.username}</span>
+                        </NavLink>)
+                    }
+                </div>
+
+            </Modal>
         </div>
     )
 }
 
 const mapStateToProps = (state) => ({
     username: state.currentUser.username,
-    userImg: state.currentUser.userImg
+    userImg: state.currentUser.userImg,
+    users: state.users
 })
 
 export default connect(mapStateToProps)(Header);

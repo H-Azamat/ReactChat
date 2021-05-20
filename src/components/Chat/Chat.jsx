@@ -9,13 +9,11 @@ import Footer from './Footer';
 const Chat = (props) => {
 
     let [isRedirect, setIsRedirect] = useState(false);
-    let [username, setUsername] = useState('');
 
     useEffect(() => {
         firebase.auth().onAuthStateChanged( (user) => {
             if(user && user.emailVerified){
                 setIsRedirect(false)
-                setUsername(user.displayName);
             }else{
                 setIsRedirect(true);
             } 

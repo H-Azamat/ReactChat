@@ -1,5 +1,6 @@
 import firebase from "../firebase";
 import 'firebase/auth';
+import {setCurrentUser} from "../redux/store";
 
 export const db = firebase.firestore();
 
@@ -25,6 +26,20 @@ export const authApi = {
             let user = userCredential.user;
             user.updateProfile({
                 displayName: username
+            })
+
+            db.collection("users").doc(user.uid).set({
+                username,
+                img: null,
+                description: "",
+                social: {
+                    github: null,
+                    instagram: null,
+                    telegram: null,
+                    vk: null,
+                    youtube: null
+                },
+                userId: user.uid
             })
             
             user.sendEmailVerification().then(() => {
@@ -65,21 +80,24 @@ export const messagesApi = {
 }
 
 export const profileApi = {
-    updateProfile: async (img, username, setCurrentUser) => {
+    updateProfile: async (img, username, description, social) => {
         const user = firebase.auth().currentUser;
+
+        await db.collection("users").doc(user.uid).update({
+            username,
+            img,
+            description,
+            social
+        }).then(() => {
+            setCurrentUser(user.uid, username, img, description, true);
+        })
 
         await user.updateProfile({
             displayName: username,
-            photoURL: img
+            photoURL: img,
+            description
         }).then(() => {
-            setCurrentUser(user.uid, username, img, true);
-        })
-
-        db.collection("users").doc(user.uid).update({
-            username: username,
-            img: img
-        }).then(() => {
-            setCurrentUser(user.uid, username, img, true);
+            setCurrentUser(user.uid, username, img, description, true);
         })
     },
     getUserProfile: async (userId) => await db.collection("users").doc(userId).get()
