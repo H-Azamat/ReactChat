@@ -2,7 +2,7 @@
   "files": {
     "static/js/0.d9f3018b.chunk.js": "/ReactChat/static/js/0.d9f3018b.chunk.js",
     "static/js/0.d9f3018b.chunk.js.map": "/ReactChat/static/js/0.d9f3018b.chunk.js.map",
-    "main.css": "/ReactChat/static/css/main.3ea8931e.chunk.css",
+    "main.css": "/ReactChat/static/css/main.fabd2de2.chunk.css",
     "main.js": "/ReactChat/static/js/main.41d78541.chunk.js",
     "main.js.map": "/ReactChat/static/js/main.41d78541.chunk.js.map",
     "runtime-main.js": "/ReactChat/static/js/runtime-main.dc7ba7cb.js",
@@ -22,7 +22,7 @@
     "static/js/9.835072ca.chunk.js": "/ReactChat/static/js/9.835072ca.chunk.js",
     "static/js/9.835072ca.chunk.js.map": "/ReactChat/static/js/9.835072ca.chunk.js.map",
     "index.html": "/ReactChat/index.html",
-    "static/css/main.3ea8931e.chunk.css.map": "/ReactChat/static/css/main.3ea8931e.chunk.css.map",
+    "static/css/main.fabd2de2.chunk.css.map": "/ReactChat/static/css/main.fabd2de2.chunk.css.map",
     "static/js/0.d9f3018b.chunk.js.LICENSE.txt": "/ReactChat/static/js/0.d9f3018b.chunk.js.LICENSE.txt",
     "static/js/3.bacf34af.chunk.js.LICENSE.txt": "/ReactChat/static/js/3.bacf34af.chunk.js.LICENSE.txt",
     "static/media/404.f615d4d7.png": "/ReactChat/static/media/404.f615d4d7.png",
@@ -41,7 +41,7 @@
   "entrypoints": [
     "static/js/runtime-main.dc7ba7cb.js",
     "static/js/3.bacf34af.chunk.js",
-    "static/css/main.3ea8931e.chunk.css",
+    "static/css/main.fabd2de2.chunk.css",
     "static/js/main.41d78541.chunk.js"
   ]
 }
